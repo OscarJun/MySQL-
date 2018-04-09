@@ -77,8 +77,8 @@ function getTimeArr(ArrLength){
 	var AddNum = ArrLength?ArrLength:Math.floor(Math.random()*50 + 50);
 	var TimeArr = []
 	for (var i = 0; i < AddNum; i++) {
-		var lastTime = 56160 - (Date.parse(new Date()) - ((new Date()).setHours(0,0,0,0)))/1000
-		TimeArr.push(new Date().getTime() + Math.floor(Math.random()*(lastTime/* - 180*/))*1000/* + 60000*/)
+		var lastTime = 86400 - (Date.parse(new Date()) - ((new Date()).setHours(0,0,0,0)))/1000
+		TimeArr.push(new Date().getTime() + Math.floor(Math.random()*(lastTime - 180))*1000 + 60000)
 	}
 	TimeArr.sort(function(a,b){
 		return a-b;
