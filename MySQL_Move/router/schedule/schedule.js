@@ -18,11 +18,13 @@ module.exports = function(data){
 				saverouteSql.success_log.update({WillMove:TimeArr.length,ReadyMove:0},{where:{Id:SuccessData.dataValues.Id}}).then(function(){
 					for (var i = 0; i < TimeArr.length; i++) {
 						var n = schedule.scheduleJob(new Date(TimeArr[i]),function(){
-							routeSql(data.BeginData).zbp_post.findOne({where:{Log_ID:{$gt:SuccessData.dataValues.SuccessID}}}).then(function(WillMoveData){
-								routeSql(data.EndData).zbp_post.create({log_CateID:1,log_AuthorID:1,log_Tag:'',log_Status:0,log_Type:0,log_Alias:'',log_IsTop:0,log_IsLock:0,log_Title:WillMoveData.dataValues.log_Title,log_Intro:WillMoveData.dataValues.log_Intro,log_Content:WillMoveData.dataValues.log_Content,log_PostTime:(Date.parse(new Date())/1000),log_CommNums:0,log_ViewNums:0,log_Template:'',log_Meta:''}).then(function(){
-									saverouteSql.success_log.findOne({where:{Id:SuccessData.dataValues.Id}}).then(function(updateData){
-										console.log(WillMoveData.dataValues.Log_ID)
-										saverouteSql.success_log.update({ReadyMove:(parseInt(updateData.dataValues.ReadyMove)+1),SuccessID:WillMoveData.dataValues.log_ID},{where:{Id:updateData.dataValues.Id}})
+							saverouteSql.success_log.findOne({where:{BeginBase:data.BeginData.Base,EndBase:data.EndData.Base}}).then(function(newSuccessData){
+								routeSql(data.BeginData).zbp_post.findOne({where:{Log_ID:{$gt:newSuccessData.dataValues.SuccessID}}}).then(function(WillMoveData){
+									routeSql(data.EndData).zbp_post.create({log_CateID:1,log_AuthorID:1,log_Tag:'',log_Status:0,log_Type:0,log_Alias:'',log_IsTop:0,log_IsLock:0,log_Title:WillMoveData.dataValues.log_Title,log_Intro:WillMoveData.dataValues.log_Intro,log_Content:WillMoveData.dataValues.log_Content,log_PostTime:(Date.parse(new Date())/1000),log_CommNums:0,log_ViewNums:0,log_Template:'',log_Meta:''}).then(function(){
+										saverouteSql.success_log.findOne({where:{Id:newSuccessData.dataValues.Id}}).then(function(updateData){
+											console.log(WillMoveData.dataValues.Log_ID)
+											saverouteSql.success_log.update({ReadyMove:(parseInt(updateData.dataValues.ReadyMove)+1),SuccessID:WillMoveData.dataValues.log_ID},{where:{Id:updateData.dataValues.Id}})
+										})
 									})
 								})
 							})
@@ -35,10 +37,13 @@ module.exports = function(data){
 				saverouteSql.success_log.update({WillMove:TimeArr.length,ReadyMove:0},{where:{Id:SuccessData.dataValues.Id}}).then(function(){
 					for (var i = 0; i < TimeArr.length; i++) {
 						var n = schedule.scheduleJob(new Date(TimeArr[i]),function(){
-							routeSql(data.BeginData).zbp_post.findOne({where:{Log_ID:{$gt:SuccessData.dataValues.SuccessID}}}).then(function(WillMoveData){
-								routeSql(data.EndData).zbp_post.create({log_CateID:1,log_AuthorID:1,log_Tag:'',log_Status:0,log_Type:0,log_Alias:'',log_IsTop:0,log_IsLock:0,log_Title:WillMoveData.dataValues.log_Title,log_Intro:WillMoveData.dataValues.log_Intro,log_Content:WillMoveData.dataValues.log_Content,log_PostTime:(Date.parse(new Date())/1000),log_CommNums:0,log_ViewNums:0,log_Template:'',log_Meta:''}).then(function(){
-									saverouteSql.success_log.findOne({where:{Id:SuccessData.dataValues.Id}}).then(function(updateData){
-										saverouteSql.success_log.update({ReadyMove:(parseInt(updateData.dataValues.ReadyMove)+1),SuccessID:WillMoveData.dataValues.Log_ID},{where:{Id:updateData.dataValues.Id}})
+							saverouteSql.success_log.findOne({where:{BeginBase:data.BeginData.Base,EndBase:data.EndData.Base}}).then(function(newSuccessData){
+								routeSql(data.BeginData).zbp_post.findOne({where:{Log_ID:{$gt:newSuccessData.dataValues.SuccessID}}}).then(function(WillMoveData){
+									routeSql(data.EndData).zbp_post.create({log_CateID:1,log_AuthorID:1,log_Tag:'',log_Status:0,log_Type:0,log_Alias:'',log_IsTop:0,log_IsLock:0,log_Title:WillMoveData.dataValues.log_Title,log_Intro:WillMoveData.dataValues.log_Intro,log_Content:WillMoveData.dataValues.log_Content,log_PostTime:(Date.parse(new Date())/1000),log_CommNums:0,log_ViewNums:0,log_Template:'',log_Meta:''}).then(function(){
+										saverouteSql.success_log.findOne({where:{Id:newSuccessData.dataValues.Id}}).then(function(updateData){
+											console.log(WillMoveData.dataValues.Log_ID)
+											saverouteSql.success_log.update({ReadyMove:(parseInt(updateData.dataValues.ReadyMove)+1),SuccessID:WillMoveData.dataValues.log_ID},{where:{Id:updateData.dataValues.Id}})
+										})
 									})
 								})
 							})
@@ -53,10 +58,13 @@ module.exports = function(data){
 					saverouteSql.success_log.update({WillMove:TimeArr.length,ReadyMove:0},{where:{Id:SuccessData.dataValues.Id}}).then(function(){
 						for (var i = 0; i < TimeArr.length; i++) {
 							var n = schedule.scheduleJob(new Date(TimeArr[i]),function(){
-								routeSql(data.BeginData).zbp_post.findOne({where:{Log_ID:{$gt:SuccessData.dataValues.SuccessID}}}).then(function(WillMoveData){
-									routeSql(data.EndData).zbp_post.create({log_CateID:1,log_AuthorID:1,log_Tag:'',log_Status:0,log_Type:0,log_Alias:'',log_IsTop:0,log_IsLock:0,log_Title:WillMoveData.dataValues.log_Title,log_Intro:WillMoveData.dataValues.log_Intro,log_Content:WillMoveData.dataValues.log_Content,log_PostTime:(Date.parse(new Date())/1000),log_CommNums:0,log_ViewNums:0,log_Template:'',log_Meta:''}).then(function(){
-										saverouteSql.success_log.findOne({where:{Id:SuccessData.dataValues.Id}}).then(function(updateData){
-											saverouteSql.success_log.update({ReadyMove:(parseInt(updateData.dataValues.ReadyMove)+1),SuccessID:WillMoveData.dataValues.Log_ID},{where:{Id:updateData.dataValues.Id}})
+								saverouteSql.success_log.findOne({where:{BeginBase:data.BeginData.Base,EndBase:data.EndData.Base}}).then(function(newSuccessData){
+									routeSql(data.BeginData).zbp_post.findOne({where:{Log_ID:{$gt:newSuccessData.dataValues.SuccessID}}}).then(function(WillMoveData){
+										routeSql(data.EndData).zbp_post.create({log_CateID:1,log_AuthorID:1,log_Tag:'',log_Status:0,log_Type:0,log_Alias:'',log_IsTop:0,log_IsLock:0,log_Title:WillMoveData.dataValues.log_Title,log_Intro:WillMoveData.dataValues.log_Intro,log_Content:WillMoveData.dataValues.log_Content,log_PostTime:(Date.parse(new Date())/1000),log_CommNums:0,log_ViewNums:0,log_Template:'',log_Meta:''}).then(function(){
+											saverouteSql.success_log.findOne({where:{Id:newSuccessData.dataValues.Id}}).then(function(updateData){
+												console.log(WillMoveData.dataValues.Log_ID)
+												saverouteSql.success_log.update({ReadyMove:(parseInt(updateData.dataValues.ReadyMove)+1),SuccessID:WillMoveData.dataValues.log_ID},{where:{Id:updateData.dataValues.Id}})
+											})
 										})
 									})
 								})

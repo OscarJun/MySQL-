@@ -4,12 +4,12 @@ var schedulefun = require('../schedule/schedule.js')
 module.exports = function(){
 	var data={
 		BeginData:{
-			Base:'mysql_move',
-			Table:'zbp_post',
+			Base:'asite',
+			Table:'zbp_testpost',
 		},
 		EndData:{
-			Base:'mysql_b',
-			Table:'zbp_testpost',
+			Base:'bsite',
+			Table:'zbp_post',
 		}
 	}
 	schedulefun(data)
