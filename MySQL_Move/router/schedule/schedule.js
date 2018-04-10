@@ -10,7 +10,6 @@ var app = express();
 
 
 module.exports = function(data){
-	// routeSql(data.BeginData)
 	saverouteSql.success_log.findOne({where:{BeginBase:data.BeginData.Base,EndBase:data.EndData.Base}}).then(function(SuccessData){
 		if (SuccessData) {
 			if (SuccessData.dataValues.WillMove > SuccessData.dataValues.ReadyMove) {
@@ -30,8 +29,6 @@ module.exports = function(data){
 						})
 					}
 				})
-				// var j = schedule.scheduleJob('1 0 0 * * *',function(data){
-				// })
 			}
 			var j = schedule.scheduleJob('1 0 0 * * *',function(){
 				var TimeArr = getTimeArr()
@@ -83,6 +80,8 @@ function getTimeArr(ArrLength){
 	TimeArr.sort(function(a,b){
 		return a-b;
 	})//从小到大排序
+	console.log(TimeArr.length)
+	console.log(TimeArr)
 	return TimeArr;
 }
 // 一天时间86400秒console.log(new Date(new Date().getTime() + Math.floor(Math.random()*(86400 - 180))*1000))获取一个一天内的随机时间 .shift获取数组第一个

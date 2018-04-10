@@ -48,10 +48,6 @@ app.listen(Ipconfig.Local.LocalIpPort,function(){
     console.log('server running……');
 })
 
-var data1 = {BeginBase:'A',EndBase:'B',BeginTable:'zbp_post',EndTable:'zbp_testpost'}
-var data2 = {A:123,B:'ssss'}
-var key = data1.BeginBase
-console.log(data2[data1.BeginBase])
 
 // var arr = [4,5],brr = [9,10],crr=[15,16,17,18]
 // aa()

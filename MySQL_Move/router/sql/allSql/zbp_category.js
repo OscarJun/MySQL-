@@ -3,7 +3,7 @@ var Sequelize = require('sequelize');
 var sequelize = require('../sqlConnect.js');
 
 module.exports = function(data){
-    var zbp_category = sequelize(data.Base).define('zbp_category',{
+    var zbp_category = sequelize(data.Base).define(data.Table,{
         cate_ID:{
             type:Sequelize.INTEGER(11),
             allowNull:false,

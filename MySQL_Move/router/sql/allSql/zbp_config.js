@@ -2,8 +2,7 @@
 var Sequelize = require('sequelize');
 var sequelize = require('../sqlConnect.js');
 module.exports = function(data){
-    var zbp_config = sequelize(data.Base).define('zbp_config',
-    {
+    var zbp_config = sequelize(data.Base).define(data.Table,{
         conf_ID:{
             type:Sequelize.INTEGER(11),
             allowNull:false,
