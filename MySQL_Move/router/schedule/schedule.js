@@ -84,15 +84,17 @@ function getTimeArr(ArrLength){
 	var date = (Date.parse(new Date()) - ((new Date()).setHours(0,0,0,0)))/1000
 	var NewArr = new Array(86220 - date);
 	NewArr = NewArr.join().split(',').map(function(item, index){
-	    return 86220 - (index + 1);
+	    return index + 1;
 	})
 	for (var i = 0; i < NewArr.length; i++) {
 		var UseTime = NewArr.splice(Math.floor(Math.random()*NewArr.length),1)
+		console.log(UseTime)
 		TimeArr.push(new Date().getTime() + UseTime*1000 + 6000)
 		if (TimeArr.length == AddNum) {
 			TimeArr.sort(function(a,b){
 				return a-b;
 			})//从小到大排序
+			console.log(TimeArr)
 			return TimeArr;
 		}
 
