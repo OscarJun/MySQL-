@@ -9,8 +9,8 @@ Ipconfig = {
 	Sql:{
 		SqlName:'success_log',//数据库名称PeiXunTYuJun 'PeiXunKeyT'
 		SqlUserName:'root',//数据库用户名
-		SqlPassword:'xiaoniu',//数据库密码 Password1'yujun'
-		SqlIpHost:'localhost',//'47.98.132.213',//192.168.50.179'192.168.31.68'
+		SqlPassword:'xiaoniuuse',//数据库密码 Password1'yujun'
+		SqlIpHost:'47.98.135.197',//
 		SqlIpPort:3306,
 	},
 	Local:{

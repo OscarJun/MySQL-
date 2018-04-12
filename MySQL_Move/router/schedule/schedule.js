@@ -81,13 +81,31 @@ module.exports = function(data){
 function getTimeArr(ArrLength){
 	var AddNum = ArrLength?ArrLength:Math.floor(Math.random()*50 + 50);
 	var TimeArr = []
-	for (var i = 0; i < AddNum; i++) {
-		var lastTime = 86400 - (Date.parse(new Date()) - ((new Date()).setHours(0,0,0,0)))/1000
-		TimeArr.push(new Date().getTime() + Math.floor(Math.random()*(lastTime - 180))*1000 + 60000)
+	var date = (Date.parse(new Date()) - ((new Date()).setHours(0,0,0,0)))/1000
+	var NewArr = new Array(86220 - date);
+	NewArr = NewArr.join().split(',').map(function(item, index){
+	    return 86220 - (index + 1);
+	})
+	for (var i = 0; i < NewArr.length; i++) {
+		var UseTime = NewArr.splice(Math.floor(Math.random()*NewArr.length),1)
+		TimeArr.push(new Date().getTime() + UseTime*1000 + 6000)
+		if (TimeArr.length == AddNum) {
+			TimeArr.sort(function(a,b){
+				return a-b;
+			})//从小到大排序
+			return TimeArr;
+		}
+
+		// randomArr = arr - newArr;
+		// value = randomArr[random];
+		// newArr(value);
+
+		// var lastTime = 86400 - (Date.parse(new Date()) - ((new Date()).setHours(0,0,0,0)))/1000
+		// TimeArr.push(new Date().getTime() + Math.floor(Math.random()*(lastTime - 180))*1000 + 60000)
+	
 	}
-	TimeArr.sort(function(a,b){
-		return a-b;
-	})//从小到大排序
+
+
 	console.log(TimeArr.length)
 	console.log(TimeArr)
 	return TimeArr;
